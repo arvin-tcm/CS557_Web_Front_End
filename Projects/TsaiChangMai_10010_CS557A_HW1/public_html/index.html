@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!-- 
+Student Info: Name=Tsai-Chang Mai, ID=10010
+Subject: CS557(C)_HW1_Spring_2016
+Author: Arvin 
+Filename: index.html.html 
+Date and Time: Jan 27, 2016 12:11:26 PM 
+Project Name: TsaiChangMai_10010_CS557A_HW1 
+--> 
+<html>
+    <head> 
+        <style> 
+            car { 
+                font-family: Arial; 
+            } 
+            #myForm { 
+                position: absolute; 
+                top: 300px; 
+            } 
+            #roof { 
+                position: absolute; 
+                top: 50px; 
+                width: 80%; 
+                height: 100px; 
+                background-color: #0000ff; 
+                text-align: center; 
+            } 
+            #backwheel { 
+                position: absolute; 
+                left: 10%; 
+                top: 100px; 
+                background-color: #ffff00; 
+                border: 3px solid black; 
+                border-radius: 50%; 
+                width: 80px; 
+                height: 80px; 
+            } 
+            #frontwheel { 
+                position: absolute; 
+                left: 55%; 
+                top: 100px; 
+                background-color: #ffff00; 
+                border: 3px solid black; 
+                border-radius: 50%; 
+                width: 80px; 
+                height: 80px; 
+            } 
+        </style> 
+        <script>
+            var myCar = {
+                make: "Future Car",
+                model: "Z18",
+                color: "blue",
+                length: "80%",
+                year: 2018,
+                category: "Luxury Car",
+                price: 10000
+            };
+            window.onload = function () {
+                document.getElementById("price").innerHTML = myCar.price;
+            }
+            function customize() {
+                myCar.length = document.getElementById("length").value;
+                myCar.color = document.getElementById("bodyColor").value;
+                document.getElementById("body").style.width = myCar.length;
+                document.getElementById("body").style.backgroundColor = myCar.color;
+            }
+        </script> 
+    </head> 
+    <body> 
+        <div id="car"> 
+            This <span id="modelyear"></span>fanastic car for just: $<span id="price"></span> 
+            <div id="roof"> 
+            </div> 
+            <div id="frontwheel"></div> 
+            <div id="backwheel"></div> 
+        </div> 
+        <div id="myForm"> 
+            <hr /> 
+            Length: <input type="text" id="length" value="80%" /> 
+            <br /> 
+            <select id="bodyColor"> 
+                <option value="silver">Silver</option> 
+                <option value="green">Green</option> 
+                <option value="Red">Red</option> 
+                <option value="blue" selected>Blue</option> 
+            </select> 
+            <br /> 
+            <button onclick="customize();">Customize</button> 
+        </div> 
+    </body> 
+</html>

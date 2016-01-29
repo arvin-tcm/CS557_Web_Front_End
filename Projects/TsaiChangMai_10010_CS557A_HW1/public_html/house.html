@@ -19,47 +19,172 @@ Project Name: TsaiChangMai_10010_CS557A_HW1
             }
             #roof {
                 position: absolute;
-                top: 50px;
-                width: 37%;
-                height: 100px;
+                top: 5%;
+                width: 40%;
+                height: 10%;
                 background-color: #000000;
                 text-align: center;
             }   
             #wall {
                 position: absolute;
-                top: 150px;
-                left: 50px;
+                top: 15%;
+                left: 5%;
                 width: 30%;
-                height: 250px;
-                background-color:#0000ff;
+                height: 30%;
+                background-color:grey;
                 text-align:center;
             }
-            .window {
+            #right_window {
                 position:absolute;
-                left:60px;
-                top:170px;
-                background-color: #ffff00;
+                left:5%;
+                top:20%;
+                background-color: whitesmoke;
                 border: 1px solid black;
                 border-radius: 50%;
-                width: 80px;
-                height: 80px;
+                width: 8%;
+                height: 12%;
             }
-            .left_window{
+            #left_window {
                 position:absolute;
-                left:360px;
-                top:170px;
-                background-color: #ffff00;
+                left:27%;
+                top:20%;
+                background-color: whitesmoke;
                 border: 1px solid black;
                 border-radius: 50%;
-                width: 80px;
-                height: 80px;
+                width: 8%;
+                height: 12%;
+            }
+            #door {
+                position:absolute;
+                left:17%;
+                top:20%;
+                background-color: blue;
+                border: 1px solid black;
+                width: 8%;
+                height: 25%;
             }
         </style>
+        <script>
+            function customize() {
+                // roof
+                document.getElementById("roof").style.width = document.getElementById("roof_width").value;
+                document.getElementById("roof").style.height = document.getElementById("roof_height").value;
+                document.getElementById("roof").style.backgroundColor = document.getElementById("roof_color").value;
+                // window
+                document.getElementById("left_window").style.width = document.getElementById("window_width").value;
+                document.getElementById("left_window").style.height = document.getElementById("window_height").value;
+                document.getElementById("left_window").style.backgroundColor = document.getElementById("window_color").value;
+                document.getElementById("right_window").style.width = document.getElementById("window_width").value;
+                document.getElementById("right_window").style.height = document.getElementById("window_height").value;
+                document.getElementById("right_window").style.backgroundColor = document.getElementById("window_color").value;
+                // wall
+                document.getElementById("wall").style.backgroundColor = document.getElementById("wall_color").value;
+                // door 
+                document.getElementById("door").style.backgroundColor = document.getElementById("door_color").value;
+            }
+        </script>
     </head>
     <body>
-        <div id="roof"></div>
-        <div id ="wall"></div>
-        <div class="window"></div>
-        <div class="left_window"></div>
+        <div id="house">
+            <div id="roof"></div>
+            <div id ="wall"></div>
+            <div id="right_window"></div>
+            <div id="left_window"></div>
+            <div id="door"></div>
+        </div>
+        <div id="myForm" style="top:50%">
+            <hr />
+            <div>
+                <table cellpadding="8">
+                    <tbody>
+                        <tr>
+                            <td>
+                                Roof Width:
+                            </td>
+                            <td>
+                                <input type="text" id="roof_width" value="40%" />
+                            </td>
+                            <td>
+                                Roof Height: 
+                            </td>
+                            <td>
+                                <input type="text" id="roof_height" value="10%" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Window Width:
+                            </td>
+                            <td>
+                                <input type="text" id="window_width" value="8%" />
+                            </td>
+                            <td>
+                                Window Height: 
+                            </td>
+                            <td>
+                                <input type="text" id="window_height" value="12%" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Roof Color:
+                            </td>
+                            <td>
+                                <select id="roof_color"> 
+                                    <option value="silver">Silver</option> 
+                                    <option value="green">Green</option> 
+                                    <option value="black" selected>Black</option> 
+                                    <option value="blue">Blue</option> 
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Wall Color:
+                            </td>
+                            <td>
+                                <select id="wall_color"> 
+                                    <option value="silver">Silver</option> 
+                                    <option value="green">Green</option> 
+                                    <option value="grey" selected>Grey</option> 
+                                    <option value="blue">Blue</option> 
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Window Color:
+                            </td>
+                            <td>
+                                <select id="window_color"> 
+                                    <option value="silver">Silver</option> 
+                                    <option value="green">Green</option> 
+                                    <option value="whitesmoke" selected>White smoke</option> 
+                                    <option value="blue">Blue</option> 
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Door Color:
+                            </td>
+                            <td>
+                                <select id="door_color"> 
+                                    <option value="silver">Silver</option> 
+                                    <option value="green">Green</option> 
+                                    <option value="white">White smoke</option> 
+                                    <option value="blue" selected>Blue</option> 
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <hr />
+            <div>
+                <button onclick="customize();">Customize</button>
+            </div>
+        </div>
+
     </body>
 </html>

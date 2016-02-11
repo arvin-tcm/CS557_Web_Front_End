@@ -1,0 +1,22 @@
+<html>
+	<head>
+		<title>Signup Confirmation</title>
+		<script src="signup.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			window.onload = function () {
+				showCustomer();
+			};
+			function showCustomer() {
+				var divCustomer = document.getElementById("customer");
+				
+				customer = getCustomer();
+				divCustomer.innerHTML = JSON.stringify(customer);
+			}
+		</script>
+	</head>
+	<body>
+		Thank you for signing up for our service!
+		<hr />
+		<div id="customer">NPU</div>
+	</body>
+</html>

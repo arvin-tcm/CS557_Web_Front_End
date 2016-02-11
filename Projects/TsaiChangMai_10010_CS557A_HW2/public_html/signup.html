@@ -1,9 +1,10 @@
+<!DOCTYPE html>
 <html>
     <head>
         <script src="signup.js" type="text/javascript"></script>
     </head>
     <body>
-        <form action="signup_confirm.html" method="post" onsubmit="
+        <form action="signup_confirm.html" method="get" onsubmit="
                 if (validate(this) === false)
                     return false;
                 addcustomer(this);">
@@ -15,47 +16,50 @@
                 </tr>
                 <tr>
                     <td>
-                        Email Address: 
+                        Email Address:
                     </td>
                     <td>
-                        <input size="20" type="text" name="emailaddress" ><span id="emailmsg"></span>
+                        <input size="20" type="text" name="emailaddress" >
+                        <span id="emailmsg"></span>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Password: 
+                        Password:
                     </td>
                     <td>
-                        <input size="20" type="password" name="password" ><span id="passwdmsg"></span>
+                        <input size="20" type="password" name="password" >
+                        <span id="passwdmsg"></span>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        ReType Password:  
+                        ReType Password:
                     </td>
                     <td>
-                        <input size="20" type="password" name="repassword"><span id="repasswdmsg"></span>
+                        <input size="20" type="password" name="repassword">
+                        <span id="repasswdmsg"></span>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Full Name  
+                        Full Name:
                     </td>
                     <td>
-                        <input size="50" type="text" name="fullname" ><span id="usrmsg"></span>
+                        <input size="50" type="text" name="fullname" >
+                        <span id="usrmsg"></span>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Address:  
-                    </td>
+                        Address:</td>
                     <td>
                         <input size="80" type="text" name="address">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        City:  
+                        City:
                     </td>
                     <td>
                         <input size="30" type="text" name="city">
@@ -63,15 +67,20 @@
                 </tr>
                 <tr>
                     <td>
-                        State:  
+                        State:
                     </td>
                     <td>
-                        <input size="30" type="text" name="state">
+                        <select name="state">
+                            <option value="CA">CA</option>
+                            <option value="NY">NY</option>
+                            <option value="WA">WA</option>
+                            <option value="TX">TX</option>
+                        </select>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Country:  
+                        Country:
                     </td>
                     <td>
                         <input size="30" type="text" name="country">
@@ -79,18 +88,20 @@
                 </tr>
                 <tr>
                     <td>
-                        Zip Code:  
+                        Zip Code:
                     </td>
                     <td>
                         <input size="20" type="text" name="zipcode">
+                        <span id="zipmsg"></span>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Phone No:  
+                        Phone No:
                     </td>
                     <td>
                         <input size="30" type="text" name="phoneno">
+                        <span id="phonemsg"></span>
                     </td>
                 </tr>
                 <tr>

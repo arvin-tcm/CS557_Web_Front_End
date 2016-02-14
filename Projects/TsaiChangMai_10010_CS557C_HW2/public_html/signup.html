@@ -1,25 +1,28 @@
+<!DOCTYPE html>
+<!-- 
+Student Info: Name=Tsai-Chang Mai, ID=10010
+Subject: CS557(C)_HW2_Spring_2016
+Author: Arvin 
+Filename: signup.html 
+Date and Time: Feb 13, 2016 4:12:43 PM 
+Project Name: TsaiChangMai_10010_CS557C_HW2 
+--> 
+<!DOCTYPE html>
 <html>
     <head>
-        <title>Sign Up Confirmation</title>
         <script src="signup.js" type="text/javascript"></script>
-        <script type="text/javascript">
-            window.onload = function () {
-                showCustomer();
-            };
-            function showCustomer() {
-                var divCustomer = document.getElementById("customer");
-
-                customer = getCustomer();
-                divCustomer.innerHTML = JSON.stringify(customer);
-            }
-        </script>
     </head>
     <body>
-        Thank you for signing up for our service!
-        <hr />
-        <div id="customer">NPU</div>
-        <div id="div1">
-            <table border="0" cellspacing="1" cellpadding="3" id="customerTable">
+        <form action="signup_confirm.html" method="get" onsubmit="
+                if (validate(this) === false)
+                    return false;
+                addcustomer(this);">
+            <table border="0" cellspacing="1" cellpadding="3">
+                <tr>
+                    <td colspan="2" align="center">
+                        Enter your information
+                    </td>
+                </tr>
                 <tr>
                     <td>
                         Email Address:
@@ -119,6 +122,6 @@
                     </td>
                 </tr>
             </table>
-        </div>
+        </form>
     </body>
 </html>

@@ -1,0 +1,94 @@
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!doctype html> 
+<html> 
+    <head> 
+        <meta charset="UTF-8"> 
+        <title>Raffle</title> 
+        <link rel="stylesheet" href="style.css" /> 
+        <script>
+            function handleDragStart(e) {
+                e.dataTransfer.setData("text", this.id);
+            }
+            function handleDragEnterLeave(e) {
+                if (e.type == "dragenter") {
+                    this.className = "drag-enter";
+                } else {
+                    this.className = "";
+                }
+            }
+            function handleOverDrop(e) {
+                e.preventDefault();
+                if (e.type != "drop") {
+                    return;
+                }
+                var draggedId = e.dataTransfer.getData("text");
+                var draggedEl = document.getElementById(draggedId);
+                if (draggedEl.parentNode == this) {
+                    return;
+                }
+                draggedEl.parentNode.removeChild(draggedEl);
+                this.appendChild(draggedEl);
+                this.className = "";
+            }
+            window.onload = function () {
+                var draggable = document.querySelectorAll("[draggable]");
+                var targets = document.querySelectorAll("[data-drop-target]");
+                for (var i = 0; i < draggable.length; i++) {
+                    draggable[i].addEventListener("dragstart", handleDragStart);
+                }
+                for (i = 0; i < targets.length; i++) {
+                    targets[i].addEventListener("dragover", handleOverDrop);
+                    targets[i].addEventListener("drop", handleOverDrop);
+                    targets[i].addEventListener("dragenter", handleDragEnterLeave);
+                    targets[i].addEventListener("dragleave", handleDragEnterLeave);
+                }
+            };
+        </script>
+        <style> 
+            img{
+                width: 100%; 
+                height: 100%; 
+            } 
+            .panel { 
+                height: 220px; 
+                width: 90%; 
+                margin: 2px; 
+                background-color: gainsboro; 
+                float: left; 
+            } 
+            [data-drop-target] { 
+                height: 200px; 
+                width: 23%; 
+                margin: 5px; 
+                background-color: lightblue; 
+                float: left; 
+            } 
+            .drag-enter { 
+                border: 2px dashed #000; 
+            } 
+        </style> 
+    </head> 
+    <body> 
+        <header> 
+            <h1>Moving Pictures Around</h1> 
+        </header> 
+        <section> 
+            <div class="panel"> 
+                <div data-drop-target="true"><img id="img1" draggable="true" src="img/coco.jpg"/></div> 
+                <div data-drop-target="true"><img id="img2" draggable="true" src="img/bobo.jpg"/></div> 
+                <div data-drop-target="true"><img id="img3" draggable="true" src="img/dodo.jpg"/></div> 
+                <div data-drop-target="true"><img id="img4" draggable="true" src="img/haha.jpg"/></div> 
+            </div> 
+            <div class="panel"> 
+                <div data-drop-target="true"></div> 
+                <div data-drop-target="true"></div> 
+                <div data-drop-target="true"></div> 
+                <div data-drop-target="true"></div> 
+            </div>
+        </section> 
+    </body> 
+</html>

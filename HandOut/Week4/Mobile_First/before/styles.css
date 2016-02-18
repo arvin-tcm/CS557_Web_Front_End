@@ -1,0 +1,159 @@
+/* Simple reset */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #f9f3e9;
+    color: #594846;
+    font: 100% "Adobe Caslon Pro", Georgia, "Times New Roman", serif;
+}
+
+a, a:visited {
+    color: #42628f;
+}
+
+p {
+    margin: 0.5em 0.25em;
+}
+
+h1 {
+    font-size: 1.75em;
+    border: solid #594846;
+    border-width: 2px 0;
+    padding: 0.25em;
+    text-align: center;
+    font-variant: small-caps;
+}
+
+h2 {
+    text-align: center;
+    font-variant: small-caps;
+}
+
+dl {
+    margin: 0 0.5em;
+}
+
+dt {
+    font-weight: bold;
+    margin: 0.5em 1em 0.5em 0;
+    border-bottom: 1px dashed #7b96bc;
+}
+
+nav {
+    background-color: #7b96bc;
+    border-bottom: 2px solid #594846;
+}
+
+    nav ul li {
+        text-align: center;
+        display: block;
+        float: left;
+        padding: 0.25em 0;
+    }
+
+    nav li a {
+        color: #f9f3e9;
+        font-variant: small-caps;
+        text-decoration: none;
+    }
+
+header p {
+    margin-top: 0;
+    text-align: center;
+}
+
+footer {
+    background-color: #7b96bc;
+    color: #f9f3e9;
+    text-align: center;
+    padding: .5em 0;
+    font-style: italic;
+}
+
+/* Structure */
+/* Common Structural Rules */
+header, footer {
+    clear: both;
+}
+
+header {
+    background: url('images/stars.jpg') repeat-x;
+    height: 300px;
+}
+
+nav {
+    min-height: 25px;
+}
+
+img, object {
+    max-width: 100%;
+}
+
+nav ul li {
+    width: 33.333%;
+}
+
+header, footer, nav {
+    width: 100%;
+}
+
+/* colors List */
+.colorlist li {
+    display: block;
+    float: left;
+    text-align: center;
+    width: 33%;
+}
+
+.colorlist img {
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+#oncolor, #oncolor ul, #oncolor ul li {
+    background: #fff;
+}
+
+
+/* Wider viewports/higher resolutions (e.g. desktop)  */
+@media screen and (min-width:481px) {
+    .column {
+        margin: 10px 1.04166667% 0 0;
+    }
+
+    #visit {
+        width: 31.25%;
+        float: left;
+    }
+
+    #oncolor {
+        margin: 10px 0 0 32%;
+    }
+}
+
+/* Mobile/lower-resolution devices */
+@media screen and (max-width:480px) {
+    .column {
+        margin: 1em 0;
+        border-bottom: 1px dashed #7b96bc;
+    }
+
+    #visit {
+        width: 100%;
+    }
+
+    .colorlist li {
+        width: 50%;
+    }
+
+    #map {
+        display: none;
+    }
+
+    header {
+        display: none;
+    }
+}

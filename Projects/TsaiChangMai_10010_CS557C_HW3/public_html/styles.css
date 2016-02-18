@@ -1,0 +1,95 @@
+/* 
+Student Info: Name=Tsai-Chang Mai, ID=10010
+Subject: CS557(C)_HW3_Spring_2016
+Author: Arvin 
+Filename: styles.css 
+Date and Time: Feb 17, 2016 6:25:53 PM 
+Project Name: TsaiChangMai_10010_CS557C_HW3 
+*/ 
+/* 
+    Created on : Feb 17, 2016, 6:25:53 PM
+    Author     : Arvin
+*/
+
+/* Structure */
+/* Common Structural Rules */
+footer {
+    clear: both;
+}
+
+p {
+    margin: 0.5em 0.25em;
+    margin-top: 0;
+    text-align: center;
+}
+
+nav {
+    min-height: 25px;
+}
+
+nav ul li {
+    width: 33.333%;
+}
+
+li {
+    display: inline;
+}
+
+footer, nav {
+    width: 100%;
+}
+
+/* colors List */
+.colorlist li {
+    display: block;
+    float: left;
+    text-align: center;
+    width: 33%;
+}
+
+.colorlist img {
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+#oncolor, #oncolor ul, #oncolor ul li {
+    background: #fff;
+}
+
+/* Mobile/lower-resolution devices */
+@media screen and (max-width:480px) {
+    .column {
+        margin: 1em 0;
+        border-bottom: 1px dashed #7b96bc;
+    }
+
+    #visit {
+        width: 100%;
+    }
+
+    .colorlist li {
+        width: 50%;
+    }
+
+    li {
+        display: block;
+    }
+
+    #map {
+        display: none;
+    }
+
+    header {
+        display: none;
+    }
+
+    #footer {
+        border-top: 2px solid #0000ff;
+        clear: both;
+        z-index: 10;
+        height: 3em;
+        margin-top: 1em;
+    }
+
+}
+

@@ -1,0 +1,45 @@
+/* 
+Student Info: Name=Tsai-Chang Mai, ID=10010
+Subject: CS557(C)_HW3_Spring_2016
+Author: Arvin 
+Filename: layout.css 
+Date and Time: Feb 17, 2016 6:26:20 PM 
+Project Name: TsaiChangMai_10010_CS557C_HW3 
+*/ 
+/* 
+    Created on : Feb 17, 2016, 6:26:20 PM
+    Author     : Arvin
+*/
+
+body {
+    width: 800px;
+    background-color: white;
+    margin: 15px auto;
+    border: 1px solid black;
+}
+#sidebarLeft {
+    width: 150px;
+    min-height: 500px;
+    float: left;
+    border-right: 2px solid #ef9c00;
+}
+#main {
+    width: 450px;
+    min-height: 500px;
+    float: right;
+}
+#sidebarRight {
+    width: 150px;
+    min-height: 500px;
+    float: right;
+    border-left: 2px solid #0000ff;
+}
+#footer {
+    clear: both;
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    height:30px;
+    border-top: 2px solid #0000ff;
+}

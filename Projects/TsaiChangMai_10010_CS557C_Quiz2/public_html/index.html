@@ -47,6 +47,12 @@ and open the template in the editor.
                     targets[i].addEventListener("dragleave", handleDragEnterLeave);
                 }
             };
+            function gameStart() {
+                var targets = document.querySelectorAll("[data-drop-target-com]");
+                
+                targets[0].appendChild(document.getElementById("img2"));
+                this.className = "";
+            }
         </script>
         <style> 
             img{
@@ -67,6 +73,13 @@ and open the template in the editor.
                 background-color: lightblue; 
                 float: left; 
             } 
+            [data-drop-target-com] { 
+                height: 200px; 
+                width: 23%; 
+                margin: 5px; 
+                background-color: lightblue; 
+                float: left; 
+            }
             .drag-enter { 
                 border: 2px dashed #000; 
             } 
@@ -76,19 +89,20 @@ and open the template in the editor.
         <header> 
             <h1>Moving Pictures Around</h1> 
         </header> 
-        <section> 
-            <div class="panel"> 
-                <div data-drop-target="true"><img id="img1" draggable="true" src="img/coco.jpg"/></div> 
-                <div data-drop-target="true"><img id="img2" draggable="true" src="img/bobo.jpg"/></div> 
-                <div data-drop-target="true"><img id="img3" draggable="true" src="img/dodo.jpg"/></div> 
-                <div data-drop-target="true"><img id="img4" draggable="true" src="img/haha.jpg"/></div> 
-            </div> 
-            <div class="panel"> 
-                <div data-drop-target="true"></div> 
-                <div data-drop-target="true"></div> 
-                <div data-drop-target="true"></div> 
-                <div data-drop-target="true"></div> 
-            </div>
-        </section> 
+            <section> 
+                <div class="panel"> 
+                    <div data-drop-target="true"></div> 
+                    <div data-drop-target-com="true"></div> 
+
+                </div> 
+                <div class="panel"> 
+                    <div data-drop-target="true"><img id="img1" draggable="true" src="img/bobo.jpg"/></div> 
+                    <div data-drop-target="true"><img id="img2" draggable="true" src="img/dodo.jpg"/></div> 
+                    <div data-drop-target="true"><img id="img3" draggable="true" src="img/haha.jpg"/></div> 
+                </div>
+                <div>
+                    <button onclick="gameStart()">Click me</button>
+                </div>
+            </section> 
     </body> 
 </html>

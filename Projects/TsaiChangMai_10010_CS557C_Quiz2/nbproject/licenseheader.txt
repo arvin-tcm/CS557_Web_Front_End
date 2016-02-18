@@ -1,0 +1,12 @@
+<#if licenseFirst??> 
+${licenseFirst}
+</#if> 
+${licensePrefix}Student Info: Name=TsaiChangMai, ID=10010
+${licensePrefix}Subject: CS557C_Quiz2_Spring_2016
+${licensePrefix}Author: ${user} 
+${licensePrefix}Filename: ${nameAndExt} 
+${licensePrefix}Date and Time: ${date} ${time} 
+${licensePrefix}Project Name: ${project.name} 
+<#if licenseLast??> 
+${licenseLast} 
+</#if>

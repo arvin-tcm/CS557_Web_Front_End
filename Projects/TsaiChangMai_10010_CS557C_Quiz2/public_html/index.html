@@ -1,14 +1,17 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html> 
-    <head> 
-        <meta charset="UTF-8"> 
-        <title>Raffle</title> 
-        <link rel="stylesheet" href="style.css" /> 
+Student Info: Name=TsaiChangMai, ID=10010
+Subject: CS557C_Quiz2_Spring_2016
+Author: Arvin-tcm 
+Filename: index.html 
+Date and Time: Feb 17, 2016 9:28:41 PM 
+Project Name: TsaiChangMai_10010_CS557C_Quiz2 
+--> 
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>TsaiChangMai_10010_CS557C_Quiz2 </title>
+        <link rel="stylesheet" href="style.css" />
         <script>
             function handleDragStart(e) {
                 e.dataTransfer.setData("text", this.id);
@@ -30,8 +33,9 @@ and open the template in the editor.
                 if (draggedEl.parentNode === this) {
                     return;
                 }
-                draggedEl.parentNode.removeChild(draggedEl);
-                this.appendChild(draggedEl);
+                var clone = draggedEl.cloneNode(true);
+                //draggedEl.parentNode.removeChild(draggedEl);
+                this.appendChild(clone);
                 this.className = "";
             }
             window.onload = function () {
@@ -47,62 +51,99 @@ and open the template in the editor.
                     targets[i].addEventListener("dragleave", handleDragEnterLeave);
                 }
             };
-            function gameStart() {
-                var targets = document.querySelectorAll("[data-drop-target-com]");
-                
-                targets[0].appendChild(document.getElementById("img2"));
+            function start() {
+                pics = ["http://localhost:8383/TsaiChangMai_10010_CS557C_Quiz2/img/stone.jpg"
+                    , "http://localhost:8383/TsaiChangMai_10010_CS557C_Quiz2/img/paper.jpg"
+                    , "http://localhost:8383/TsaiChangMai_10010_CS557C_Quiz2/img/scissor.jpg"];
+                var rand = Math.floor(Math.random() * 3) + 1;
+                var target = document.querySelector("[data-drop-target-com]");
+
+                var item = document.getElementsByTagName("img");
+                console.log(item);
+                var cln = item[rand].cloneNode(true);
+                var result;
+                target.appendChild(cln);
                 this.className = "";
+                //console.log(cln);
+                setTimeout(3000);
+                var pick = document.getElementsByTagName("img");
+                var user = pick[0].src;
+                var com = pick[1].src;
+                console.log(pics.indexOf(user));
+                console.log(pics.indexOf(com));
+                result = win(pics.indexOf(user), pics.indexOf(com));
+                console.log(result);
+                var div = document.getElementById("result");
+                div.innerHTML = div.innerHTML + result;
+            }
+            function win(user, com) {
+                if (user === com) {
+                    return "tie";
+                }
+                if (user > com) {
+                    if (user - com === 1) {
+                        return "user win";
+                    } else {
+                        return "computer win";
+                    }
+                } else if (user < com) {
+                    if (user - com === -1) {
+                        return "computer win";
+                    } else {
+                        return "user win";
+                    }
+                }
             }
         </script>
-        <style> 
-            img{
-                width: 100%; 
-                height: 100%; 
-            } 
-            .panel { 
-                height: 220px; 
-                width: 90%; 
-                margin: 2px; 
-                background-color: gainsboro; 
-                float: left; 
-            } 
-            [data-drop-target] { 
-                height: 200px; 
-                width: 23%; 
-                margin: 5px; 
-                background-color: lightblue; 
-                float: left; 
-            } 
-            [data-drop-target-com] { 
-                height: 200px; 
-                width: 23%; 
-                margin: 5px; 
-                background-color: lightblue; 
-                float: left; 
+        <style>
+            img {
+                width: 100%;
+                height: 100%;
             }
-            .drag-enter { 
-                border: 2px dashed #000; 
-            } 
-        </style> 
-    </head> 
-    <body> 
-        <header> 
-            <h1>Moving Pictures Around</h1> 
-        </header> 
-            <section> 
-                <div class="panel"> 
-                    <div data-drop-target="true"></div> 
-                    <div data-drop-target-com="true"></div> 
-
-                </div> 
-                <div class="panel"> 
-                    <div data-drop-target="true"><img id="img1" draggable="true" src="img/bobo.jpg"/></div> 
-                    <div data-drop-target="true"><img id="img2" draggable="true" src="img/dodo.jpg"/></div> 
-                    <div data-drop-target="true"><img id="img3" draggable="true" src="img/haha.jpg"/></div> 
-                </div>
-                <div>
-                    <button onclick="gameStart()">Click me</button>
-                </div>
-            </section> 
-    </body> 
+            .panel {
+                height: 220px;
+                width: 90%;
+                margin: 2px;
+                background-color: gainsboro;
+                float: left;
+            }
+            [data-drop-target] {
+                height: 200px;
+                width: 23%;
+                margin: 5px;
+                background-color: lightblue;
+                float: left;
+            }
+            [data-drop-target-com] {
+                height: 200px;
+                width: 23%;
+                margin: 5px;
+                background-color: lightblue;
+                float: left;
+            }
+            .drag-enter {
+                border: 2px dashed #000;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>Game</h1>
+        </header>
+        <section>
+            <div class="panel">
+                <div data-drop-target="true"></div>
+                <div data-drop-target-com="true"></div>
+            </div>
+            <div class="panel">
+                <div data-drop-target="true"><img id="img1" draggable="true" src="img/stone.jpg"/></div>
+                <div data-drop-target="true"><img id="img2" draggable="true" src="img/paper.jpg"/></div>
+                <div data-drop-target="true"><img id="img3" draggable="true" src="img/scissor.jpg"/></div>
+            </div>
+            <div>
+                <button onclick="start()">Start</button>
+            </div>
+        </section>
+        <div id = "result"></div>
+    </body>
 </html>

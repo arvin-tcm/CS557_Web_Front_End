@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<!--
+Student Info: Name=TsaiChangMai, ID=10010
+Subject: CS557C_Quiz2_Spring_2016
+Author: Arvin-tcm 
+Filename: example.html 
+Date and Time: Mar 2, 2016 3:15:03 PM 
+Project Name: TsaiChangMai_10010_CS557C_Quiz2 
+--> 
+<html>
+    <head>
+        <title>Quiz2</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            var selectedImage = null;
+            var selectedZone = null;
+            var playerThrow = '';
+            var computerThrow = '';
+
+            var throws = ["rock", "scissors", "paper"];
+            function handleDragStart(e) {
+                e.dataTransfer.setData("text", this.id);
+            }
+            function handleDragEnterLeave(e) {
+                if (e.type === "dragenter") {
+                    this.className = "drag-enter";
+                } else {
+                    this.className = "";
+                }
+            }
+            function handleOverDrop(e) {
+                e.preventDefault();
+                if (e.type !== "drop") {
+                    return;
+                }
+                var draggedId = e.dataTransfer.getData("text");
+                var draggedEl = document.getElementById(draggedId);
+                if (draggedEl.parentNode === this) {
+                    return;
+                }
+
+                // This is player's throw
+                playerThrow = draggedId;
+                selectedZone = draggedEl.parentNode;
+                selectedImage = draggedEl;
+
+                draggedEl.parentNode.removeChild(draggedEl);
+                this.appendChild(draggedEl);
+                this.className = "";
+                //this.removeEventListener("drop", handleOverDrop);
+            }
+
+            function startGame(e) {
+                var playerZone = document.getElementById("player");
+
+                if (selectedImage !== null) {
+                    playerZone.removeChild(selectedImage);
+                    selectedZone.appendChild(selectedImage);
+                    selectedImage = null;
+                }
+
+                playerThrow = '';
+                computerThrow = '';
+                var computerZone = document.getElementById("computer");
+                computer.innerHTML = "";
+
+                var result = document.getElementById("result");
+                result.innerHTML = "";
+                window.setTimeout("throwRandomly();", 2000);
+            }
+
+            function throwRandomly() {
+                var random = Math.floor(Math.random() * 3);
+                var imgHTML = "<img src='img/" + throws[random] + ".jpg'/>";
+                computerThrow = throws[random];
+
+                var computerZone = document.getElementById("computer");
+                computerZone.innerHTML = imgHTML;
+
+                var result = document.getElementById("result");
+                result.innerHTML = "<h1>" + whoIsWinner() + "</h1>";
+            }
+
+            function whoIsWinner() {
+                var result = "";
+                if (selectedImage === null) {
+                    result = "You lose";
+                } else if ((playerThrow === "rock" && computerThrow === "scissors")
+                        || (playerThrow === "scissors" && computerThrow === "paper")
+                        || (playerThrow === "paper" && computerThrow === "rock")) {
+                    result = "You win";
+                } else if (playerThrow === computerThrow) {
+                    result = 'Tie';
+                } else {
+                    result = "You lose";
+                }
+                return result;
+            }
+
+            window.onload = function () {
+                var draggable = document.querySelectorAll("[draggable]");
+                var targets = document.querySelectorAll("[data-drop-target]");
+                for (var i = 0; i < draggable.length; i++) {
+                    draggable[i].addEventListener("dragstart", handleDragStart);
+                }
+                for (i = 0; i < targets.length; i++) {
+                    targets[i].addEventListener("dragover", handleOverDrop);
+                    targets[i].addEventListener("drop", handleOverDrop);
+                    targets[i].addEventListener("dragenter", handleDragEnterLeave);
+                    targets[i].addEventListener("dragleave", handleDragEnterLeave);
+                }
+            };
+        </script>
+        <style>
+            img {
+                width: 100%;
+                height: 100%;
+            }
+            .panel {
+                height: 220px;
+                width: 50%;
+                margin: 2px;
+                background-color: gainsboro;
+                float: left;
+            }
+            .panelThrow {
+                width: 22%;
+                margin: 2px;
+                background-color: gainsboro;
+                clear: both;
+            }
+            [data-drop-target] {
+                height: 200px;
+                width: 43%;
+                margin: 5px;
+                background-color: lightblue;
+                float: left;
+            }
+            [data-draggable]{
+                height: 200px;
+                width: 100%;
+                margin: 5px;
+                background-color: lightblue;
+            }
+            .drag-enter {
+                border: 2px dashed #000;
+            }
+            #start {
+                width: 100px;
+                height: 50px;
+            }
+        </style>
+    </head>
+    <body>
+        <header>Game</header>
+        <section>
+            <button id="start" onclick="startGame(event)">Start</button>
+            <hr />
+            <div class="panel">
+                <div data-drop-target="true" id="player"></div>
+                <div data-drop-target="true" id="computer"></div>
+            </div>
+            <p id="result"><p>
+            <div class="panelThrow">
+                <div data-draggable="true"><img id="rock" draggable="true" src="img/rock.jpg"/></div>
+                <div data-draggable="true"><img id="scissors" draggable="true" src="img/scissors.jpg"/></div>
+                <div data-draggable="true"><img id="paper" draggable="true" src="img/paper.jpg"/></div>
+            </div>
+        </section>
+    </body>
+</html>

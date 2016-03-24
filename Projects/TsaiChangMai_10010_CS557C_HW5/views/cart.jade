@@ -1,0 +1,27 @@
+doctype html
+html
+    head
+        title= title
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        script(src='/javascripts/get.js')
+    body
+        header
+            h1= title
+            hr
+        section
+            table
+                thead
+                    tr
+                        th Item Name
+                        th Quantity
+                tbody
+                    each item in cart
+                        tr
+                            td 
+                                input(type='text' value=item.itemname id='item_' + item.itemname)
+                            td 
+                                input(type='number' value=item.quantity id='quantity_' + item.itemname)
+                            td
+                                button(id=item.itemname value='update' onclick="myFunc(this, 'cart', 'update')") update
+                            td
+                                button(id=item.itemname value='update' onclick="myFunc(this, 'cart', 'delete')") delete

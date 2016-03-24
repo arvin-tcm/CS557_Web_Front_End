@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--
+Student Info: Name=TsaiChangMai, ID=10010
+Subject: CS557C_HW4_Spring_2016
+Author: Arvin-tcm 
+Filename: order.html 
+Date and Time: Mar 10, 2016 5:31:29 PM 
+Project Name: TsaiChangMai_10010_CS557C_HW4 
+--> 
+<html>
+    <head>
+        <title>Order</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="order.js" type="text/javascript"></script>
+        <style>
+            table, th, td {
+                border-collapse: collapse;
+            }
+            table {
+                border: 1px solid black;
+            }
+            th, td {
+                padding: 8px;
+                text-align: left;    
+            }
+            button, input[type=submit] {
+                width:100px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Form</h1>
+        <form action="cart.html" method="get" onsubmit="return checkForm(this)">
+            <table>
+                <tr style="border: 1px solid black;">
+                    <th>Quality of images</th>
+                    <td>
+                        <select id="img_quality">
+                            <option value="g">Good</option>
+                            <option value="v">Very Good</option>
+                            <option value="e">Excellent</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th rowspan="4">Type of items</th>
+                    <td><input type="radio" name="item" value="hardcopy" checked>Hard-copy prints<br></td>
+                </tr>
+                <tr>
+                    <td><input type="radio" name="item" value="poster">Posters<br></td>
+                </tr>
+                <tr>
+                    <td><input type="radio" name="item" value="mug">Coffee mugs<br></td>
+                </tr>
+                <tr>
+                    <td><input type="radio" name="item" value="tshirt">T-shirts<br></td>
+                </tr>
+                <tr style="border: 1px solid black;">
+                    <th>Glossy finish</th>
+                    <td><input type="checkbox" id="glossy">Yes/No</td>
+                </tr>
+                <tr style="border: 1px solid black;">
+                    <th>Quantity</th>
+                    <td><input type="number" id="quantity" min="1"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input onclick="clicked(this)" type="submit" name="calculate" value="Calculate"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input onclick="clicked(this)" type="submit" name="add" value="Add to Cart"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input onclick="clicked(this)" type="submit" name="go" value="Go to Cart"></td>
+                </tr>
+            </table>
+        </form>
+        <div id="result"><br><br></div>
+    </body>
+</html>

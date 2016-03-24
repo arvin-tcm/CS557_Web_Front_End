@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!-- 
+Student Info: Name=Tsai-Chang Mai, ID=10010
+Subject: CS557(C)_HW4_Spring_2016
+Author: Arvin-tcm 
+Filename: cart.html 
+Date and Time: Mar 10, 2016 7:22:08 PM 
+Project Name: TsaiChangMai_10010_CS557C_HW4 
+--> 
+<html>
+    <head>
+        <title>Cart</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="order.js" type="text/javascript"></script>
+        <script>
+            var customer = JSON.parse(localStorage.customer);
+            window.onload = function () {
+                var table = document.getElementById("myTable");
+                for (var key in customer) {
+                    for (var item in customer[key]) {
+                        if (customer[key][item] === 0)
+                            continue;
+                        var newRow = table.insertRow(table.rows.length);
+                        var cell1 = newRow.insertCell(0);
+                        var cell2 = newRow.insertCell(1);
+                        var cell3 = newRow.insertCell(2);
+                        var cell4 = newRow.insertCell(3);
+                        cell1.innerHTML = key;
+                        cell2.innerHTML = item;
+                        cell3.innerHTML = customer[key][item];
+                        var test = '<input type="submit" onclick="myRemove(this)" name="' + key + '_' + item + '">';
+                        console.log(test);
+                        cell4.innerHTML = '<input type="submit" onclick="myRemove(this)" name="' + key + '_' + item + '">';
+                    }
+                }
+            };
+            //<input onclick="clicked(this)" type="submit" name="calculate" value="Calculate"></td>
+            function myRemove(test) {
+                console.log(test.name);
+                var arr = test.name.split("_");
+                customer[arr[0]][arr[1]] = 0;
+                localStorage["customer"] = JSON.stringify(customer);
+            }
+        </script>
+        <style>
+            table, th, td {
+                border-collapse: collapse;
+            }
+            table {
+                border: 1px solid black;
+            }
+            th, td {
+                padding: 8px;
+                text-align: left;    
+            }
+            button, input[type=submit] {
+                width:100px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>cart</h1>
+        <form action="cart.html" method="get">
+            <table id="myTable">
+
+            </table>
+        </form><br>
+        <button onclick="location.href='order.html';">Go to Order</button><br><br>
+        <button>Checkout</button>
+    </body>
+</html>

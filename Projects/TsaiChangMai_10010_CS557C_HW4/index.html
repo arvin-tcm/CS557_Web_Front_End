@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!--
+Student Info: Name=TsaiChangMai, ID=10010
+Subject: CS557C_HW4_Spring_2016
+Author: Arvin-tcm 
+Filename: index.html 
+Date and Time: Mar 10, 2016 5:21:05 PM 
+Project Name: TsaiChangMai_10010_CS557C_HW4 
+--> 
+<html>
+    <head>
+        <title>Image</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            #map {
+                width:400px;
+                height: 500px;
+            }
+        </style>
+    </head>
+    <body>
+        <div style="background-color: yellow">
+            <h1 style="color: purple">Home</h1>
+            <div id="map"></div>
+            <script>
+                function initMap() {
+                    var mapDiv = document.getElementById("map");
+                    var map = new google.maps.Map(mapDiv, {center: {lat: 44.540, lng: -78.546}, zoom: 10});
+                }
+            </script>
+            <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
+        </div>
+    </body>
+</html>
